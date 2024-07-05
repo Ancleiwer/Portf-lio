@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio de Designer Gráfico</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #222;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .nav ul li {
+            margin: 0 15px;
+        }
+
+        .nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .about, .works, .contact {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .works .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .work-item {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            color: #666;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .work-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .work-item img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .footer {
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="title">Portfólio de [Seu Nome]</h1>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#trabalhos">Trabalhos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="sobre" class="about">
+        <div class="container">
+            <h2>Sobre Mim</h2>
+            <p>Sou um designer gráfico apaixonado por criar soluções visuais inovadoras e impactantes. Com experiência em diversas áreas do design, estou sempre em busca de novos desafios e oportunidades para crescer profissionalmente.</p>
+        </div>
+    </section>
+
+    <section id="trabalhos" class="works">
+        <div class="container">
+            <h2>Meus Trabalhos</h2>
+            <div class="work-grid">
+                <!-- Espaço para suas imagens -->
+                <div class="work-item"><img src="imagens/imagem1.png" alt="Descrição da Imagem 1"></div>
+                <div class="work-item"><img src="imagens/imagem2.png" alt="Descrição da Imagem 2"></div>
+                <div class="work-item"><img src="imagens/imagem3.png" alt="Descrição da Imagem 3"></div>
+                <div class="work-item"><img src="imagens/imagem4.png" alt="Descrição da Imagem 4"></div>
+                <div class="work-item"><img src="imagens/imagem5.png" alt="Descrição da Imagem 5"></div>
+                <div class="work-item"><img src="imagens/imagem6.png" alt="Descrição da Imagem 6"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contact">
+        <div class="container">
+            <h2>Contato</h2>
+            <p>Entre em contato comigo através do e-mail: <a href="mailto:seuemail@exemplo.com">seuemail@exemplo.com</a></p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 [Seu Nome]. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const workItems = document.querySelectorAll('.work-item');
+
+            const showWorkItems = () => {
+                const triggerBottom = window.innerHeight / 5 * 4;
+
+                workItems.forEach(item => {
+                    const itemTop = item.getBoundingClientRect().top;
+
+                    if (itemTop < triggerBottom) {
+                        item.classList.add('show');
+                    } else {
+                        item.classList.remove('show');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', showWorkItems);
+            showWorkItems();
+        });
+    </script>
+</body>
+</html>
